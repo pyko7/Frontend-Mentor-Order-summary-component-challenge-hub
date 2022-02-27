@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Red Hat Display", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: url("./assets/images/pattern-background-desktop.svg");
+}
+
+/*# sourceMappingURL=style.css.map */

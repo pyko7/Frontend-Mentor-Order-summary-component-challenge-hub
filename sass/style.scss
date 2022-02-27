@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+$breakpoints:(
+    'small': 767px, 
+    'medium': 991px,
+);
+
+@mixin small-screen{
+    @media screen and (max-width: map-get($breakpoints, small)){
+        @content;
+    }
+}
+
+@mixin medium-screen{
+    @media screen and (min-width: map-get($breakpoints, small)) and (max-width: map-get($breakpoints, medium)){
+        @content;
+    }
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("/assets/images/pattern-background-desktop.svg")no-repeat; 
+    background-color: hsl(225, 100%, 94%);
+    background-size:contain;
+
+    @include small-screen(){
+       background: url("/assets/images/pattern-background-mobile.svg") no-repeat;
+       background-color: hsl(225, 100%, 94%);
+       background-size:contain;
+    }
+}   
+
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card{
+    width: 23%;
+    min-width: 375px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px hsl(224, 23%, 55%);
+    background-color: #fff;
+    overflow: hidden;
+
+    @include small-screen(){
+        width: 90%;
+        min-width: 310px;
+    }
+
+    @include medium-screen(){
+        width: 75%;
+    }
+
+    &__image{
+        width: 100%;
+        & img{
+            width: 100%;
+        }
+    }
+
+    &__informations{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 25px 35px;
+        padding-bottom: 0;
+        margin: 15px auto 0 auto;
+        text-align: center;
+
+
+            h1{
+                margin-bottom: 15px;
+                font-size: 26px;
+                font-weight: 900;
+                color: hsl(223, 47%, 23%);
+            }
+            p{
+                color: hsl(224, 23%, 55%);
+                line-height: 1.5;
+            }
+
+        .subscription__container{
+            width: 100%;
+            padding: 25px 10px;
+            margin: 35px auto 5px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            background: hsl(225, 100%, 98%);
+    
+            .subscription-details-container{
+                display: flex;
+                img{
+                    margin-right: 15px;
+                }
+                #subscription-name{
+                    font-weight: 900;
+                    color: hsl(223, 47%, 23%);
+                }
+            }
+            a{
+                text-decoration: none;
+                p{
+                    font-weight: 700;
+                    color: hsl(245, 75%, 52%);
+                    font-size: 14px;
+                    text-decoration: underline;
+                &:hover{
+                    color: hsl(224, 23%, 55%);
+                    text-decoration: none;
+                }
+                
+                }
+            }
+        }
+    }
+
+    &__footer{
+        width: 100%;
+        padding: 25px;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        #paymentBtn{
+            padding: 15px 0;
+            margin-bottom: 35px;
+            color: white;
+            font-weight: 700;
+            background: hsl(245, 75%, 52%);
+            border:none;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px hsl(245, 75%, 52%);
+            font-size: 14px;
+            cursor: pointer;
+            
+            &:hover{
+                background-color:hsl(224, 23%, 55%);
+                box-shadow: 0 5px 10px hsl(224, 23%, 55%);
+            }
+        
+        }
+        #cancelBtn{
+            width: fit-content;
+            margin: 0 auto;
+            color: hsl(224, 23%, 55%);
+            font-weight: 700;
+            background: transparent;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+        
+        &:hover{
+            color: hsl(223, 47%, 23%);
+            font-weight: 900;
+        }
+        }
+
+    }
+}
+
+footer{
+    position: absolute;
+    bottom: 10px;
+}
